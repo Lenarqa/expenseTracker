@@ -5,17 +5,37 @@ const ExpenseForm = () => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmound, setEnteredAmound] = useState(0);
   const [enteredDate, setEnteredDate] = useState("2019-01-01");
+  // const [userInput, setUserInput] = useState({
+  //   enteredTitle: "",
+  //   enteredAmound: 0,
+  //   enteredDate: "",
+  // });
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle: event.target.value,
+    // });
+    // setUserInput((prevState) => {
+    //   return { ...prevState, enteredTitle: event.target.value };
+    // });
   };
 
   const amoundChangeHandler = (event) => {
     setEnteredAmound(event.target.value);
+    // setUserInput({
+    //   ...userInput,
+    //   enteredAmound: event.target.value,
+    // });
   };
 
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
+    // setUserInput({
+    //   ...userInput,
+    //   enteredDate: event.target.value,
+    // });
   };
 
   return (
