@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmound, setEnteredAmound] = useState(0);
-  const [enteredDate, setEnteredDate] = useState("2019-01-01");
+  const [enteredAmound, setEnteredAmound] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
   // const [userInput, setUserInput] = useState({
   //   enteredTitle: "",
-  //   enteredAmound: 0,
+  //   enteredAmound: "",
   //   enteredDate: "",
   // });
 
@@ -38,29 +38,52 @@ const ExpenseForm = () => {
     // });
   };
 
+  const submitHandler = (event) => {
+    event.preventDefault();
+    
+    const expenseData = {
+      title: enteredTitle,
+      amound: enteredAmound,
+      date: new Date(enteredDate),
+    };
+    
+    props.onSaveExpenseData(expenseData);
+
+    setEnteredTitle("");
+    setEnteredAmound("");
+    setEnteredDate("");
+    
+  };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input onChange={titleChangeHandler} type="text" />
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amound</label>
           <input
-            onChange={amoundChangeHandler}
             type="number"
             min="0.01"
             step="0.01"
+            value={enteredAmound}
+            onChange={amoundChangeHandler}
           />
         </div>
         <div className="new-expense__control">
           <label>Date</label>
           <input
-            onChange={dateChangeHandler}
             type="date"
             min="2019-01-01"
             max="2022-12-31"
+            value={enteredDate}
+            onChange={dateChangeHandler}
           />
         </div>
       </div>

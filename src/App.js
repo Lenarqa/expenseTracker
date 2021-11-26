@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
+import { useState } from "react/cjs/react.development";
 
 const App = () => {
   const expense = [
@@ -31,10 +32,17 @@ const App = () => {
     },
   ];
 
+  const [expenses, setExpenses] = useState(expense);
+
+  const addExpenseHandler = (enteredExpence) => {
+    setExpenses({...expense, enteredExpence});
+    console.log(expenses);
+  }
+
   return (
     <div>
       <h2>Let's learn React!</h2>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expense={expense}/>
     </div>
   );
