@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import ExpenseItem from "./components/ExpenseItem";
+import Expenses from "./components/Expenses";
 
 function App() {
   const expense = [
@@ -33,26 +33,7 @@ function App() {
   return (
     <div>
       <h2>Let's learn React!</h2>
-      <ExpenseItem
-        title={expense[0].title}
-        amound={expense[0].amound}
-        date={expense[0].date}
-      />
-      <ExpenseItem
-        title={expense[1].title}
-        amound={expense[1].amound}
-        date={expense[1].date}
-      />
-      <ExpenseItem
-        title={expense[2].title}
-        amound={expense[2].amound}
-        date={expense[2].date}
-      />
-      <ExpenseItem
-        title={expense[3].title}
-        amound={expense[3].amound}
-        date={expense[3].date}
-      />
+      <Expenses expense={expense}/>
     </div>
   );
 }
